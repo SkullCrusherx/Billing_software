@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Inventory</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f2f2f2;
+            padding:30px;
+        }
+
+        .box{
+            width:80%;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            margin-top:10px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            background:blue;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+
+        table{
+            width:100%;
+            margin-top:30px;
+            border-collapse:collapse;
+        }
+
+        th, td{
+            border:1px solid #ddd;
+            padding:12px;
+            text-align:center;
+        }
+
+        th{
+            background:blue;
+            color:white;
+        }
+
+        a{
+            color:red;
+            text-decoration:none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Inventory System</h1>
+
+    <!-- ADD FORM -->
+
+    <form action="/add" method="POST">
+
+        <input type="text"
+               name="name"
+               placeholder="Item Name"
+               required>
+
+        <input type="number"
+               name="price"
+               placeholder="Price"
+               required>
+
+        <button type="submit">
+            Add Item
+        </button>
+
+    </form>
+
+    <!-- TABLE -->
+
+    <table>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Name</th>
+
+            <th>Price</th>
+
+            <th>Delete</th>
+
+        </tr>
+
+        {% for x in items %}
+
+        <tr>
+
+            <td>{{ x[0] }}</td>
+
+            <td>{{ x[1] }}</td>
+
+            <td>{{ x[2] }}</td>
+
+
+
+
+            <td>
+                <a href="/delete/{{ x[0] }}">
+                    Delete
+                </a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
